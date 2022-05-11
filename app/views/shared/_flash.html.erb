@@ -1,11 +1,17 @@
-<% if notice %>
-  <div>
-    <%= notice %>
-  </div>
-<% end %>
+<% if notice || alert %>
+  <div class="container mb-3">
 
-<% if alert %>
-  <div>
-    <%= alert %>
+    <% if notice %>
+      <div class="alert alert-success">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <div class="alert alert-danger">
+        <%= alert %>
+      </div>
+    <% end %>
+
   </div>
 <% end %>
