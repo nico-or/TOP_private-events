@@ -16,5 +16,5 @@
 
 <p>
   <span class="fw-bold">Creator: </span>
-  <%= User.find(@event.host_id).username %>
+  <%= link_to @event.host.username, user_path(@event.host) %>
 </p>
