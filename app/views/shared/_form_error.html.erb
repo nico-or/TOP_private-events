@@ -1,0 +1,15 @@
+<% unless object.errors.count.zero? %>
+  <div class="alert alert-danger row">
+    <div class="col-2 display-6 d-flex justify-content-center align-items-center">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+    </div>
+    <div class="col-10">
+      <div>There where <%= pluralize(object.errors.count, 'error') %>:</div>
+      <ul>
+        <% object.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
