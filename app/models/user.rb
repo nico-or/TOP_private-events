@@ -12,4 +12,11 @@ class User < ApplicationRecord
     inverse_of: :host,
     foreign_key: :host_id
   )
+
+  has_many :attendances
+  has_many(
+    :attending_events,
+    through: :attendances,
+    source: :event
+  )
 end

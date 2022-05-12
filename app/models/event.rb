@@ -6,4 +6,11 @@ class Event < ApplicationRecord
     class_name: 'User',
     inverse_of: :hosted_events
   )
+
+  has_many :attendances
+  has_many(
+    :attending_users,
+    through: :attendances,
+    source: :user
+  )
 end
