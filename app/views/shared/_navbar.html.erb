@@ -1,8 +1,7 @@
-<nav class="navbar navbar-dark bg-dark mb-3">
-  <div class="container-fluid">
+<nav class="navbar navbar-dark bg-dark sticky-top mb-4">
     <%= link_to "Event Manager", root_path, class: "navbar-brand" %>
 
-    <div class="d-flex gap-2">
+    <div class="hstack gap-2 me-3">
       <% if signed_in? %>
         <%= link_to current_user.username, "", class: "btn btn-primary" %>
         <%= link_to "Sign out", destroy_user_session_path, class: "btn btn-outline-primary" %>
@@ -11,5 +10,4 @@
         <%= link_to "Log in", new_user_session_path, class: "btn btn-outline-primary" %>
       <% end %>
     </div>
-  </div>
 </nav>
