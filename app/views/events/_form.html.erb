@@ -1,0 +1,28 @@
+<%= form_with model: event do |form| %>
+
+  <%= render 'shared/form_error', object: event %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control', autofocus: :true, required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, class: 'form-label' %>
+    <%= form.text_area :description, class: 'form-control', required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :location, class: 'form-label' %>
+    <%= form.text_field :location, class:'form-control', required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :date, class: 'form-label' %>
+    <%= form.date_field :date, class: 'form-control', required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
