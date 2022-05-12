@@ -9,7 +9,7 @@
 require 'faker'
 
 # 1 will be Foo.
-USER_COUNT = 20
+USER_COUNT = 5
 EVENT_COUNT = 10
 ATTENDANCES_COUNT = USER_COUNT * 2
 
@@ -36,7 +36,7 @@ EVENT_COUNT.times do
     name: Faker::Lorem.sentence,
     description: Faker::Lorem.paragraph,
     location: Faker::Address.full_address,
-    date: Faker::Date.forward
+    date: Faker::Date.forward.strftime('%Y-%m-%d')
   )
 end
 
