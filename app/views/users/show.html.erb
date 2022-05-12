@@ -1,0 +1,27 @@
+<h1>Profile: <%= @user.username %></h1>
+
+<h2>Hosted Events</h2>
+<% if @user.hosted_events.count.zero? %>
+  <p>You haven't created any events</p>
+<% else %>
+  <ul>
+  <% @user.hosted_events.each do |event| %>
+    <li>
+      <%= link_to event.name, event_path(event) %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+
+<h2>Attending Events</h2>
+<% if @user.hosted_events.count.zero? %>
+  <p>You haven't subscribed to any events</p>
+<% else %>
+  <ul>
+    <% @user.attending_events.each do |event| %>
+      <li>
+        <%= link_to event.name, event_path(event) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

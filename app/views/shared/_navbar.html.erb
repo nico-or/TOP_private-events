@@ -5,15 +5,16 @@
       <% if signed_in? %>
         <%= link_to 'Create Event', new_event_path, class: "btn btn-success" %>
         <div class="btn-group">
-          <%= link_to current_user.username, "", class: "btn btn-primary" %>
-          <div class="btn-group">
-            <button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li>
-                <%= link_to "Sign out", destroy_user_session_path, class: "dropdown-item" %>
-              </li>
-            </ul>
-          </div>
+          <button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= current_user.username %>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <%= link_to "Your Profile", user_path(current_user), class: "dropdown-item py-2" %>
+              <li><hr class="dropdown-divider"></li>
+              <%= link_to "Sign out", destroy_user_session_path, class: "dropdown-item" %>
+            </li>
+          </ul>
         </div>
       <% else %>
         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
