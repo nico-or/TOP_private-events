@@ -9,9 +9,9 @@
 require 'faker'
 
 # 1 will be Foo.
-USER_COUNT = 5
-EVENT_COUNT = 10
-ATTENDANCES_COUNT = USER_COUNT * 2
+USER_COUNT = 8
+EVENT_COUNT = 20
+ATTENDANCES_COUNT = USER_COUNT * 3
 
 # Seed users
 foo = User.create(
@@ -36,7 +36,7 @@ EVENT_COUNT.times do
     name: Faker::Lorem.sentence,
     description: Faker::Lorem.paragraph(sentence_count: 6, random_sentences_to_add: 10),
     location: Faker::Address.full_address,
-    date: Faker::Date.forward.strftime('%Y-%m-%d')
+    date: Faker::Date.between(from: 2.years.ago, to: 2.years.from_now)
   )
 end
 
