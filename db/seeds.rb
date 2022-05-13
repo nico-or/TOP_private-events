@@ -34,7 +34,7 @@ EVENT_COUNT.times do
   Event.create(
     host_id: rand(1..USER_COUNT),
     name: Faker::Lorem.sentence,
-    description: Faker::Lorem.paragraph,
+    description: Faker::Lorem.paragraph(sentence_count: 6, random_sentences_to_add: 10),
     location: Faker::Address.full_address,
     date: Faker::Date.forward.strftime('%Y-%m-%d')
   )
