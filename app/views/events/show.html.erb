@@ -45,9 +45,9 @@
   </div>
 
   <div class="col-lg-3">
-    <div class="h2">Attendees</div>
+    <% attendee_count = @event.attending_users.count %>
+    <div class="h2">Attendees (<%= attendee_count %>)</div>
     <div>
-      <% attendee_count = @event.attending_users.count %>
       <ul>
         <% if attendee_count.zero? %>
           <li>No one is coming.</li>
