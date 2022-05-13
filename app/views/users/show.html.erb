@@ -1,27 +1,53 @@
 <h1>Profile: <%= @user.username %></h1>
 
-<h2>Hosted Events</h2>
-<% if @user.hosted_events.count.zero? %>
-  <p>You haven't created any events</p>
-<% else %>
-  <ul>
-  <% @user.hosted_events.each do |event| %>
-    <li>
-      <%= link_to event.name, event_path(event) %>
-    </li>
-  <% end %>
-  </ul>
-<% end %>
-
-<h2>Attending Events</h2>
-<% if @user.hosted_events.count.zero? %>
-  <p>You haven't subscribed to any events</p>
-<% else %>
-  <ul>
-    <% @user.attending_events.each do |event| %>
-      <li>
-        <%= link_to event.name, event_path(event) %>
-      </li>
+<div class="row">
+  <div class="col-12 col-lg-4">
+    <h2>Hosted Events</h2>
+    <% if @user.hosted_events.count.zero? %>
+      <p>You haven't created any events</p>
+    <% else %>
+      <ul>
+        <% @user.hosted_events.each do |event| %>
+          <li>
+            <%= link_to event.name, event_path(event) %>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
+  </div>
+  <div class="col">
+    <h2>Attending Events</h2>
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <h3>Future Events</h3>
+        <% events = @user.attending_events.where("date >= ?", Date.today) %>
+        <% if events.empty? %>
+          <p>You don't have future events.</p>
+        <% else %>
+          <ul>
+            <% events.each do |event| %>
+              <li>
+                <%= link_to event.name, event_path(event) %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+      <div class="col">
+        <h3>Past Events</h3>
+        <% events = @user.attending_events.where("date < ?", Date.today) %>
+        <% if events.empty? %>
+          <p>You haven't attended to any events.</p>
+        <% else %>
+          <ul>
+            <% events.each do |event| %>
+              <li>
+                <%= link_to event.name, event_path(event) %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
