@@ -10,10 +10,11 @@ class User < ApplicationRecord
     :hosted_events,
     class_name: 'Event',
     inverse_of: :host,
-    foreign_key: :host_id
+    foreign_key: :host_id,
+    dependent: :destroy
   )
 
-  has_many :attendances
+  has_many :attendances,dependent: :destroy
   has_many(
     :attending_events,
     through: :attendances,
