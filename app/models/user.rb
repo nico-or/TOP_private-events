@@ -19,4 +19,8 @@ class User < ApplicationRecord
     through: :attendances,
     source: :event
   )
+
+  def attends? event
+    event.attending_users.include? self
+  end
 end
