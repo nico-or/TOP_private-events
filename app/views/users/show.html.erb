@@ -1,4 +1,9 @@
-<h1>Profile: <%= @user.username %></h1>
+<div class="row">
+  <h1>
+    <%= @user.username %>
+    <%= link_to "Edit", edit_user_registration_path, class:'btn btn-outline-primary' %>
+  </h1>
+</div>
 
 <div class="row">
   <div class="col-12 col-lg-4">
