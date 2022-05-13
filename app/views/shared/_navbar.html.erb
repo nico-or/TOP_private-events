@@ -1,24 +1,20 @@
-<nav class="navbar navbar-dark bg-dark sticky-top mb-4">
-    <%= link_to "Event Manager", root_path, class: "navbar-brand" %>
-
-    <div class="hstack gap-2 me-3">
-      <% if signed_in? %>
-        <%= link_to 'Create Event', new_event_path, class: "btn btn-success" %>
-        <div class="btn-group">
-          <button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= current_user.username %>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li>
-              <%= link_to "Your Profile", user_path(current_user), class: "dropdown-item py-2" %>
-              <li><hr class="dropdown-divider"></li>
-              <%= link_to "Sign out", destroy_user_session_path, class: "dropdown-item" %>
-            </li>
-          </ul>
-        </div>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
-        <%= link_to "Log in", new_user_session_path, class: "btn btn-secondary" %>
-      <% end %>
-    </div>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top mb-4">
+  <div class="container-fluid">
+      <%= link_to "Event Manager", root_path, class: "navbar-brand" %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav-links">
+        <ul class="navbar-nav  ms-auto gap-2">
+          <% if signed_in? %>
+            <li class="nav-item"><%= link_to 'Create Event', new_event_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "Your Profile", user_path(current_user), class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, class: "nav-link" %></li>
+          <% else %>
+            <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "Log in", new_user_session_path, class: "nav-link" %></li>
+          <% end %>
+        </ul>
+      </div>
+  </div>
 </nav>
