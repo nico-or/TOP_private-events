@@ -12,6 +12,7 @@
     <h2>Hosted Events (<%= @user.hosted_events.count %>)</h2>
     <% if @user.hosted_events.count.zero? %>
       <p>You haven't created any events</p>
+      <%= link_to "Create an Event", new_event_path, class: "btn btn-success" %>
     <% else %>
       <ul>
         <% @user.hosted_events.each do |event| %>

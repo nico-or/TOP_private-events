@@ -7,7 +7,9 @@
       <div class="collapse navbar-collapse" id="nav-links">
         <ul class="navbar-nav  ms-auto gap-2">
           <% if signed_in? %>
-            <li class="nav-item"><%= link_to 'Create Event', new_event_path, class: "nav-link" %></li>
+            <li>
+            <%= link_to 'Create Event', new_event_path, class: "btn btn-success" %>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <%= current_user.username %>
