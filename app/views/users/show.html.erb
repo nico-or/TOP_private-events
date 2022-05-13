@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col-12 col-sm-6">
         <h3>Future Events</h3>
-        <% events = @user.attending_events.where("date >= ?", Date.today) %>
+        <% events = @user.attending_events.future%>
         <% if events.empty? %>
           <p>You don't have future events.</p>
         <% else %>
@@ -35,7 +35,7 @@
       </div>
       <div class="col">
         <h3>Past Events</h3>
-        <% events = @user.attending_events.where("date < ?", Date.today) %>
+        <% events = @user.attending_events.past %>
         <% if events.empty? %>
           <p>You haven't attended to any events.</p>
         <% else %>

@@ -13,4 +13,7 @@ class Event < ApplicationRecord
     through: :attendances,
     source: :user
   )
+
+  scope :past, -> { where('date < ?', Date.today) }
+  scope :future, -> { where('date >= ?', Date.today) }
 end
