@@ -1,7 +1,9 @@
 <div class="row">
   <h1>
     <%= @user.username %>
-    <%= link_to "Edit", edit_user_registration_path, class:'btn btn-outline-primary' %>
+    <% if current_user.eql? @user %>
+      <%= link_to "Edit", edit_user_registration_path, class:'btn btn-outline-primary' %>
+    <% end %>
   </h1>
 </div>
 
