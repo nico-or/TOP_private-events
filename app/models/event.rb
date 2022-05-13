@@ -7,7 +7,7 @@ class Event < ApplicationRecord
     inverse_of: :hosted_events
   )
 
-  has_many :attendances
+  has_many :attendances, dependent: :destroy
   has_many(
     :attending_users,
     through: :attendances,

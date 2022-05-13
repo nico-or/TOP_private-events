@@ -20,18 +20,19 @@
         <div class="col"><%= link_to @event.host.username, user_path(@event.host) %></div>
       </div>
     </div>
-  </div>
 
-  <div class="col-lg-3">
     <div>
       <% if current_user %>
-        <div class="row">
+        <div class="hstack gap-2">
           <% if @event.host.eql? current_user %>
-            <%= link_to "Edit event", edit_event_path, class: "btn btn-lg col-8 mx-auto btn-outline-primary" %>
+            <%= link_to "Edit event", edit_event_path, class: "btn btn-primary" %>
+            <%= button_to "Delete event", event_path, method: :delete, class: "btn btn-danger" %>
           <% elsif current_user.attends? @event %>
-            <%= link_to "Leave event", leave_event_path, class: "btn btn-lg col-8 mx-auto btn-danger" %>
+            <%= link_to "Join event", join_event_path, class: "btn btn-outline-success disabled" %>
+            <%= link_to "Leave event", leave_event_path, class: "btn btn-danger" %>
           <% else %>
-            <%= link_to "Join event", join_event_path, class: "btn btn-lg col-8 mx-auto btn-success" %>
+            <%= link_to "Join event", join_event_path, class: "btn btn-success" %>
+            <%= link_to "Leave event", leave_event_path, class: "btn btn-outline-danger disabled" %>
           <% end %>
         </div>
       <% else %>
@@ -41,7 +42,9 @@
         </p>
       <% end %>
     </div>
+  </div>
 
+  <div class="col-lg-3">
     <div class="h2">Attendees</div>
     <div>
       <% attendee_count = @event.attending_users.count %>

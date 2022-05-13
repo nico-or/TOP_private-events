@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :set_event, only: %i[show edit update join leave]
+  before_action :set_event, except: %i[index new]
   before_action :authorize, only: %i[edit]
 
   def index
@@ -34,6 +34,11 @@ class EventsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @event.destroy
+    redirect_to user_path(current_user), notice: 'Event deleted successfully.'
   end
 
   # Attendance creation
