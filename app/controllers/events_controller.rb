@@ -14,6 +14,7 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.hosted_events.build(event_params)
+    @event.attending_users << current_user
 
     if @event.save
       redirect_to @event
