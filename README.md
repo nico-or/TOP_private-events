@@ -23,11 +23,17 @@ Technical requirements:
     - Can create and delete attendances.
 
 Further improvements ideas:
+  - Create a proper AttendancesController
+  - Move attendances methods out of the EventController
   - Support for a time field in the Event model.
   - Improve homepage (upcoming events, etc).
   - Archive and freeze past events.
   - Allow users to send invitations.
     - Make invite-only private events.
+
+Known Bugs:
+  - Navbar dropdown broken in Heroku deployment
+  - Attendances model doesn't check for duplicated records
 
 Implementation notes:
 - basic and responsive Bootstrap UI
