@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :set_event, only: %i[show edit update join leave]
+  before_action :authorize, only: %i[edit]
 
   def index
     @events = Event.all
