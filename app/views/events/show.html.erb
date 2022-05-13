@@ -1,20 +1,58 @@
-<h1><%=@event.name %></h1>
+<div class="row">
+  <div class="col">
+    <div class="h1">
+      <%=@event.name %>
+    </div>
+    <div>
+      <%= @event.description * 10 %>
+    </div>
 
-<p>
-  <%= @event.description %>
-</p>
+    <div>
+      <div class="row gx-2">
+        <div class="col-3 fw-bold text-end">Location:</div>
+        <div class="col"><%= @event.location %></div>
+      </div>
+      <div class="row gx-2">
+        <div class="col-3 fw-bold text-end">Date:</div>
+        <div class="col"><%= @event.date %></div>
+      </div>
+      <div class="row gx-2">
+        <div class="col-3 fw-bold text-end">Creator:</div>
+        <div class="col"><%= link_to @event.host.username, user_path(@event.host) %></div>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <span class="fw-bold">Location: </span>
-  <%= @event.location %>
-</p>
+  <div class="col-lg-3">
+    <div>
+      <% if current_user %>
+        <div class="row">
+          <% if current_user.attends? @event %>
+            <%= link_to "Leave event", leave_event_path, class: "btn btn-lg col-8 mx-auto btn-danger" %>
+          <% else %>
+            <%= link_to "Join event", join_event_path, class: "btn btn-lg col-8 mx-auto btn-success" %>
+          <% end %>
+        </div>
+      <% else %>
+        <p>
+          <%= link_to "Sign up", new_user_registration_path %> or
+          <%= link_to "Log in", new_user_session_path %> to join this event.
+        </p>
+      <% end %>
+    </div>
 
-<p>
-  <span class="fw-bold">Date: </span>
-  <%= @event.date %>
-</p>
-
-<p>
-  <span class="fw-bold">Creator: </span>
-  <%= link_to @event.host.username, user_path(@event.host) %>
-</p>
+    <div class="h2">Attendees</div>
+    <div>
+      <% attendee_count = @event.attending_users.count %>
+      <ul>
+        <% if attendee_count.zero? %>
+          <li>No one is coming.</li>
+        <% else %>
+          <% @event.attending_users.each do |attendee| %>
+            <li><%= link_to attendee.username, user_path(attendee) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
