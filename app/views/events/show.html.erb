@@ -27,7 +27,9 @@
     <div>
       <% if current_user %>
         <div class="row">
-          <% if current_user.attends? @event %>
+          <% if @event.host.eql? current_user %>
+            <%= link_to "Edit event", edit_event_path, class: "btn btn-lg col-8 mx-auto btn-outline-primary" %>
+          <% elsif current_user.attends? @event %>
             <%= link_to "Leave event", leave_event_path, class: "btn btn-lg col-8 mx-auto btn-danger" %>
           <% else %>
             <%= link_to "Join event", join_event_path, class: "btn btn-lg col-8 mx-auto btn-success" %>

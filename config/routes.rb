@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  resources :events, only: %i[index show new create]
+  resources :events, only: %i[index show new create edit]
   resources :events do
     member do
       get 'join'

@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :set_event, only: %i[show join leave]
+  before_action :set_event, only: %i[show edit update join leave]
+
   def index
     @events = Event.all
   end
@@ -20,6 +21,17 @@ class EventsController < ApplicationController
       redirect_to @event
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @event.update(event_params)
+      redirect_to @event, notice: 'Event updated successfully.'
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
