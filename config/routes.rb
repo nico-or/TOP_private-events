@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   }
 
   resources :events, only: %i[index show new create]
+  resources :events do
+    member do
+      get 'join'
+      get 'leave'
+    end
+  end
   resources :users, only: %i[show]
 
   root to: "events#index"
