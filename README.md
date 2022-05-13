@@ -2,6 +2,8 @@
 
 Implementation of an event manager webapp with authentication.
 
+Check the Heroku live deplyoyment [here](https://pure-forest-02374.herokuapp.com/). (it will take a few seconds to spin-up)
+
 Technical requirements:
 - Authentication
   - Users can signup, login and logout
