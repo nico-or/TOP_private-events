@@ -1,0 +1,32 @@
+<div class="card col-4 p-2">
+  <div class="card-body">
+    <h5 class="card-title">
+      <%= link_to event.name, event_path(event),
+      class: 'link-dark text-decoration-none stretched-link' %>
+    </h5>
+    <p class="card-text">
+      <%= event.description %>
+    </p>
+
+  </div>
+  <div class="card-footer">
+    <div class="row">
+      <div class="fw-bold col-4">Location: </div>
+      <div class="text-truncate col-8">
+        <%= event.location %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="fw-bold col-4">Date: </div>
+      <div class="text-truncate col-8">
+        <%= event.date %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="fw-bold col-4">Creator: </div>
+      <div class="text-truncate col-8">
+        <%= event.host.username %>
+      </div>
+    </div>
+  </div>
+</div>

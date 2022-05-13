@@ -1,5 +1,5 @@
 <h1>Events</h1>
 
 <div class="d-flex flex-wrap gap-3">
-  <%= render @events %>
+  <%= render partial: 'card', collection: @events, as: :event %>
 </div>
