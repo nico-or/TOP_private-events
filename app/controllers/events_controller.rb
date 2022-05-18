@@ -8,6 +8,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @attendance = Attendance.find_or_initialize_by(user: current_user, event: @event)
   end
 
   def new
@@ -39,26 +40,6 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     redirect_to user_path(current_user), notice: 'Event deleted successfully.'
-  end
-
-  # Attendance creation
-  def join
-    if @event.attending_users.include? current_user
-      redirect_to @event, alert: 'You are already attending this event.'
-    else
-      @event.attending_users << current_user
-      redirect_to @event, notice: 'Successfully registered for this event.'
-    end
-  end
-
-  def leave
-    if @event.attending_users.include? current_user
-      @event.attending_users.delete current_user
-      redirect_to @event, notice: 'You no longer are registered for this event.'
-    else
-      @event.attending_users << current_user
-      redirect_to @event, alert: "You aren't registered for this event."
-    end
   end
 
   private

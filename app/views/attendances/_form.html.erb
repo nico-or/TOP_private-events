@@ -1,0 +1,15 @@
+<div class="hstack gap-2">
+  <%= form_with model: attendance do |f| %>
+    <%= f.hidden_field :event_id, value: @event.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit 'Join Event',
+      class: "btn btn-success #{'disabled' if @attendance.persisted?}" %>
+  <% end %>
+
+  <%= form_with model: attendance, method: :delete do |f| %>
+    <%= f.hidden_field :event_id, value: @event.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit 'Leave Event',
+      class: "btn btn-danger #{'disabled' unless @attendance.persisted?}" %>
+  <% end %>
+</div>

@@ -4,13 +4,10 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
+  resources :attendances, only: %i[create destroy]
+
   resources :events
-  resources :events do
-    member do
-      get 'join'
-      get 'leave'
-    end
-  end
+
   resources :users, only: %i[show]
 
   root to: "events#index"
