@@ -17,7 +17,7 @@
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li class="nav-item"><%= link_to "Profile", user_path(current_user), class: "dropdown-item" %></li>
                 <li><hr class="dropdown-divider"></li>
-                <li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, class: "dropdown-item" %></li>
+                <li class="nav-item"><%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
               </ul>
             </li>
           <% else %>
