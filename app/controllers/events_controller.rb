@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   before_action :authorize, only: %i[edit]
 
   def index
-    @events = Event.all
+    @events = Event.all.includes(:host)
   end
 
   def show
