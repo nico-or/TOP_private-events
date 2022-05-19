@@ -8,6 +8,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @attendees = @event.attending_users.records
     @attendance = Attendance.find_or_initialize_by(user: current_user, event: @event)
   end
 

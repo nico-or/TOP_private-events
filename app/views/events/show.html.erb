@@ -42,14 +42,13 @@
   </div>
 
   <div class="col-lg-3">
-    <% attendee_count = @event.attending_users.count %>
-    <div class="h2">Attendees (<%= attendee_count %>)</div>
+    <div class="h2">Attendees (<%= @attendees.count %>)</div>
     <div>
       <ul>
-        <% if attendee_count.zero? %>
+        <% if @attendees.empty?%>
           <li>No one is coming.</li>
         <% else %>
-          <% @event.attending_users.each do |attendee| %>
+          <% @attendees.each do |attendee| %>
             <li><%= link_to attendee.username, user_path(attendee) %></li>
           <% end %>
         <% end %>
